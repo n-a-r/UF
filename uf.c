@@ -55,3 +55,9 @@ void uf_union(UF* s, int x, int y) {
     }
   }
 }
+
+void uf_free(UF* s) {
+  free(s->parents);
+  free(s->ranks);
+  free(s);
+}
