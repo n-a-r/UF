@@ -8,23 +8,6 @@ struct uf_ {
   unsigned char* ranks;
 };
 
-int main() {
-  printf("Hello, World\n");
-  UF *fiv;
-  fiv = uf_create(10);
-  uf_union(fiv, 1, 2);
-  uf_union(fiv, 3, 4);
-  uf_union(fiv, 1, 4);
-  for (int i = 0; i < fiv->size; i++) {
-    printf("%d %d %d\n", i, fiv->parents[i], fiv->ranks[i]);
-  }
-  printf("%d\t%d\n", uf_find(fiv, 4), uf_find(fiv, 2)); 
-  for (int i = 0; i < fiv->size; i++) {
-    printf("%d %d %d\n", i, fiv->parents[i], fiv->ranks[i]);
-  }
-  return 0;
-}
-
 UF *uf_create(int n) {
   UF *s = (UF*)malloc(sizeof(UF));
   s->size = n;
