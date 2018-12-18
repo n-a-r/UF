@@ -1,4 +1,3 @@
-#include <stdio.h>
 #include <stdlib.h>
 #include "uf.h"
 
@@ -23,21 +22,20 @@ UF *uf_create(int n) {
 }
 
 int uf_find(UF* s, int x) {
-  if (x < 0 || x >= s->size) return -1;
-
-  int p  = s->parents[x];
+  int p  = s->parents[x];  
   int gp = s->parents[p];
 
   while (p != gp) {
     s->parents[x] = gp;
-    p = gp;
+    x = gp;
+    p = s->parents[x];
     gp = s->parents[p];
   }
 
   return p;
 }
 
-void uf_union(UF* s, int x, int y) {
+void uf_union(UF* s, int x, int y) {  
   x = uf_find(s, x);
   y = uf_find(s, y);
   
